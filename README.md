@@ -259,34 +259,7 @@ Let's do it!
 
 ```html
 # edit.erb
-<h1>Update Owner</h1>
 
-<form action="/owners/<%=@owner.id%>" method="POST">
-  <label>Name:</label>
-
-  <br></br>
-
-  <input type="text" name="owner[name]" id="owner_name" value="<%=@owner.name%>">
-
-  <br></br>
-
-  <label>Choose an existing pet:</label>
-
-  <br></br>
-
-  <%Pet.all.each do |pet|%>
-    <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id%>" value="<%=pet.id%>" <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%></input>
-  <%end%>
-
-  <br></br>
-
-  <label>and/or, create a new pet:</label>
-  <br></br>
-  <label>name:</label>
-    <input  type="text" name="pet[name]" id="pet_name"></input>
-  <br></br>
-  <input type="submit" value="Update Owner">
-</form>
 ```
 
 The main difference here is that we added the `checked` property to each checkbox with a condition to test whether the given pet is already present in the current owner's collection of pets. We implemented this `if` statement by wrapping the `checked` attribute in ERB tags, allowing us to use Ruby on our view page.
@@ -343,7 +316,7 @@ And that's it!
 
 ### Creating and Updating Pets with Associated Owners
 
-Now that we've walked through these features together for the `Owner` model, take some time and try to build out the same functionality for `Pet`. The form to create a new pet should allow a user to select from the list of available owners and/or create a new owner, and the form to edit a given pet should allow the user to select a new owner or create a new owner. Note that if a new owner is created it would override any existing owner that is selected. 
+Now that we've walked through these features together for the `Owner` model, take some time and try to build out the same functionality for `Pet`. The form to create a new pet should allow a user to select from the list of available owners and/or create a new owner, and the form to edit a given pet should allow the user to select a new owner or create a new owner. Note that if a new owner is created it would override any existing owner that is selected.
 
 Make sure you run the tests to check your work.
 
